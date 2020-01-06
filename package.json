@@ -1,7 +1,7 @@
 {
   "name": "react-chipman",
-  "version": "1.0.0",
-  "description": "A React component for managing an ordere",
+  "version": "0.0.0-semantically-versioned",
+  "description": "A React component for managing an ordered list of chips.",
   "author": "baddlan",
   "license": "MIT",
   "repository": "baddlan/react-chipman",
