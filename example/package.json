@@ -7,9 +7,13 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
+    "react-chipman": "file:..",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-chipman": "link:.."
+    "react-smooth-dnd": "^0.11.1"
+  },
+  "devDependencies": {
+    "tslint-react": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

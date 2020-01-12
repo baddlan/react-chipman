@@ -1,23 +1,7 @@
-/**
- * @class ExampleComponent
- */
+import './index.css';
 
-import * as React from 'react'
+export {ChipContainer as ChipContainer} from './chip-container';
 
-import styles from './styles.css'
-
-export type Props = { text: string }
-
-export default class ExampleComponent extends React.Component<Props> {
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
-}
+// Using named exports because Rollup hicks up when exporting an interface.
+import {ChipContainerProps as _ChipContainerProps} from './chip-container';
+export type ChipContainerProps = _ChipContainerProps;

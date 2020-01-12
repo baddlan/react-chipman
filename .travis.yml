@@ -1,4 +1,33 @@
+dist: trusty
 language: node_js
+sudo: false
+
+addons:
+  chrome: stable
+
+cache:
+  yarn: true
+  directories:
+  - $HOME/.npm
+  - node_modules
+
+branches:
+  only:
+  - master
+
 node_js:
-  - 9
-  - 8
+- 10
+
+# before_install:
+# - npm i -g npm@^6.0.0
+
+# before_script:
+# - npm prune
+
+script:
+- yarn run test:lib-coverage # Run regular testing and output code coverage report
+- yarn run build
+
+after_success:
+- yarn run report-coverage
+- yarn run semantic-release

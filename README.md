@@ -1,31 +1,24 @@
+
+[![NPM](https://img.shields.io/npm/v/react-chipman.svg)](https://www.npmjs.com/package/react-chipman) ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
+
 # react-chipman
 
-> A React component for managing an ordere
+A React component for arranging a collection of UI chips using drag-and-drop.
 
-[![NPM](https://img.shields.io/npm/v/react-chipman.svg)](https://www.npmjs.com/package/react-chipman) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+## Demo and Documentation
+
+Visit the [project website](https://baddlan.github.io/react-chipman).
 
 ## Install
 
 ```bash
 npm install --save react-chipman
 ```
-
-## Usage
-
-```tsx
-import * as React from 'react'
-
-import MyComponent from 'react-chipman'
-
-class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
+Or,
+```bash
+yarn add react-chipman
 ```
 
 ## License
 
-MIT © [baddlan](https://github.com/baddlan)
+[MIT](LICENSE) © [baddlan](https://github.com/baddlan) /  AppsOven

@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import {ChipContainer} from './chip-container';
 
 describe('ExampleComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+    expect(ChipContainer).toBeTruthy();
+  });
+});

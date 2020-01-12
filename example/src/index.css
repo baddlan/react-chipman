@@ -1,5 +1,40 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 16px;
   font-family: sans-serif;
+  line-height: 1.6em;
+}
+
+#examples .cm-container .smooth-dnd-container {
+  border: 1px solid #ddd;
+}
+
+#examples .cm-container .cm-chip {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+#examples #days.cm-container .cm-chip.cm-cont-planets,
+#examples #planets.cm-container .cm-chip.cm-cont-days {
+  background-color: lightsalmon;
+}
+
+#examples #inputs.cm-container .smooth-dnd-draggable-wrapper {
+  padding: 0.25em;
+}
+
+#examples #inputs.cm-container input {
+  font-size: 0.9em;
+  width: 9em;
+}
+
+#examples #buttons.cm-container .smooth-dnd-draggable-wrapper {
+  padding: 0.25em;
+}
+
+
+#examples #buttons.cm-container button {
+  border-radius: 4px;
 }
