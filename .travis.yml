@@ -25,9 +25,9 @@ node_js:
 # - npm prune
 
 script:
-- yarn run test # Run regular testing and output code coverage report
-- yarn run build
+- yarn test # Run regular testing and output code coverage report
+- yarn clean && yarn build
 
 after_success:
-# - yarn run report-coverage
-- yarn run semantic-release
+# - yarn report-coverage
+- yarn semantic-release
