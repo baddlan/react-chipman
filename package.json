@@ -12,25 +12,21 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=10",
+    "npm": ">=6"
   },
   "scripts": {
     "build": "rollup -c",
-    "clean": "rimraf ./dist",
-    "commit": "./node_modules/.bin/commit",
-    "copy:shared": "copyfiles ./README.md ./projects/ngx-ratio-bar && copyfiles ./LICENSE ./projects/ngx-ratio-bar",
-    "deploy": "gh-pages -d example/build",
-    "lint": "yarn tslint --project .",
+    "clean": "rimraf ./dist ./build ./example/dist ./example/build",
+    "commit": "yarn commit",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "publish:docs": "npx angular-cli-ghpages --no-silent --repo=git@github.com:baddlan/react-chipman.git --dir=./dist/react-chipman-showcase",
-    "publish:lib": "npx semantic-release",
+    "docs:build": "cd example && yarn install && yarn run build",
+    "docs:publish": "gh-pages -d example/build",
     "semantic-release": "semantic-release",
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
-    "test:watch": "react-scripts-ts test --env=jsdom",
-    "travis-deploy-once": "travis-deploy-once --pro"
+    "test:watch": "react-scripts-ts test --env=jsdom"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -53,14 +49,16 @@
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
-    "codecov": "^3.6.1",
-    "copyfiles": "^2.1.1",
     "cross-env": "^5.1.4",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.17.0",
     "gh-pages": "^2.2.0",
-    "prettier": "1.19.1",
-    "react": "^16.4.1",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "^3.1.0",
     "react-smooth-dnd": "^0.11.1",
@@ -72,15 +70,13 @@
     "rollup-plugin-typescript3": "^1.1.2",
     "rollup-plugin-url": "^3.0.1",
     "semantic-release": "^16.0.1",
-    "tslint": "^5.20.1",
-    "tslint-react": "^4.1.0",
     "typescript": "^3.0.0"
   },
   "files": [
     "dist"
   ],
   "lint-staged": {
-    "projects/**/*.ts": [
+    "src/*.ts": [
       "prettier --write",
       "git add"
     ]

@@ -14,15 +14,9 @@ const extensions = [
 export default {
   input: 'src/index.tsx',
   output: [
-    // {
-    //   file: pkg.main,
-    //   format: 'cjs',
-    //   exports: 'named',
-    //   sourcemap: true
-    // },
     {
       file: pkg.module,
-      format: 'es',
+      format: 'es', // Other options include `cjs`, etc...
       exports: 'named',
       sourcemap: true
     }
@@ -38,6 +32,6 @@ export default {
       rollupCommonJSResolveHack: true,
       clean: true,
     }),
-    commonjs({extensions})
+    commonjs({extensions}),
   ]
 }
