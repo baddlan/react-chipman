@@ -16,7 +16,7 @@
     "npm": ">=6"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && tsc",
     "clean": "rimraf ./dist ./build ./example/dist ./example/build",
     "commit": "yarn commit",
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",
