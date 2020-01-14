@@ -63,7 +63,7 @@ export interface ChipContainerProps {
 interface State {
   chips?: ChipProps[];
   children?: Array<React.ReactElement<IChip>>;
-}
+ }
 
 /**
  * A container that adds drag-and-drop capabilities to chip components.
@@ -95,8 +95,8 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
       // Add a class name that identifies chips with their parent container
       if (props.id) {
         newChip.className = (newChip.className && isString(newChip.className) && newChip.className.length > 0)
-                          ? ` ${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`
-                          : `${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`;
+          ? ` ${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`
+          : `${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`;
       }
 
       return newChip;
@@ -106,7 +106,7 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
 
     if (props.children) {
       children = isArray(props.children) ? [...props.children]
-                                                 : [props.children as React.ReactElement];
+        : [props.children as React.ReactElement];
     }
 
     this.state = { chips, children };
@@ -119,9 +119,12 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
   /** @override */
   public render() {
     const {id, orientation, group, className, removeOnDropOut} = {...ChipContainer.DEFAULT_PROPS, ...this.props};
-    const draggables = this.state.children ? this.renderChildren()
-                                           : this.state.chips ? this.renderChips()
-                                                              : [];
+    const draggables = this.state.children 
+      ? this.renderChildren()
+      : this.state.chips 
+        ? this.renderChips()
+        : [];
+    
     return (
       <div id={id} className={className}>
         <Container
