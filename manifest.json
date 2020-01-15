@@ -1,0 +1,8 @@
+{
+  "short_name": "react-chipman",
+  "name": "react-chipman",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
