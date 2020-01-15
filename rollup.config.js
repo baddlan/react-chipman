@@ -1,4 +1,4 @@
-import typescript from 'rollup-plugin-typescript3'
+import typescript from '@rollup/plugin-typescript'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import external from 'rollup-plugin-peer-deps-external'
@@ -35,10 +35,7 @@ export default {
     }),
     url(),
     resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
-    }),
+    typescript(),
     commonjs({extensions}),
   ]
 }
