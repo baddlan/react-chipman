@@ -2,3 +2,6 @@
   padding: 8px;
 }
 
+.cm-container .smooth-dnd-container.horizontal {
+  display: flex;
+}
