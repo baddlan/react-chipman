@@ -5,7 +5,8 @@ import isString from 'lodash/isString';
 import { Container, ContainerOptions, Draggable, DropResult, OnDropCallback } from 'react-smooth-dnd';
 
 import { Chip } from './chip';
-import { ChipProps, ContainerChangeEvent, DraggableItem, IChip} from './types';
+import {ChipProps, DraggableItem, IChip, ListActionsResult} from './types';
+import { applyListActions } from './utils';
 
 export interface ChipContainerProps {
   id?: string;
@@ -57,7 +58,7 @@ export interface ChipContainerProps {
    * An event that gets fired when chips are added, removed or changed
    * position in the container.
    */
-  onChange?: (event: ContainerChangeEvent) => void;
+  onChange?: (event: ListActionsResult<any>) => void;
 }
 
 interface State {
@@ -215,41 +216,14 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
    * @return The modified list of draggables.
    */
   protected applyDropResult<T extends DraggableItem>(draggables: T[], dropResult: DropResult): T[] {
-    const { removedIndex, addedIndex, payload } = dropResult;
-
-    // If there is nothing to add or remove, return the original draggables array
-    if (removedIndex === null && addedIndex === null) {
-      return draggables;
-    }
-
-    const result = [...draggables];
-    let itemToAdd = payload;
-    const eventActions: ContainerChangeEvent['actions'] = [];
-
-    // Item removed
-    if (removedIndex !== null) {
-      itemToAdd = result.splice(removedIndex, 1)[0];
-      eventActions.push({ type: 'remove', index: removedIndex });
-    }
-
-    // Item added
-    // Note: if both `removedIndex` and `addedIndex` have numeric values, then the
-    // position of the item has changed.
-    if (addedIndex !== null) {
-      result.splice(addedIndex, 0, itemToAdd);
-      eventActions.push({ type: 'add', index: addedIndex });
-    }
+    const result = applyListActions(draggables, {...dropResult});
 
     // Fire change event if a callback is provided in the props
     if (this.props.onChange) {
-      const changeEvent: ContainerChangeEvent = {
-        actions: eventActions,
-        item: payload,
-      };
-
+      const changeEvent = {...result};
       this.props.onChange(changeEvent);
     }
 
-    return result;
+    return result.items;
   }
 }

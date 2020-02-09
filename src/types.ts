@@ -10,12 +10,20 @@ export interface ChipProps extends IChip {
   className?: string;
 }
 
-export interface ContainerChangeEvent {
-  actions: [{
-    type: 'add' | 'remove';
-    index: number;
-  }?];
-  item: DraggableItem;
+export interface ListActions {
+  removedIndex: number | null;
+  addedIndex: number | null;
+  /** The item to which the above actions will be applied. */
+  payload?: any;
+}
+
+export interface ListActionsResult<T> {
+  /** List of named actions applied to the input items list to produce the output list above. */
+  actions: ListActions;
+  /** Modified list of items. */
+  items: T[];
+  /** The item provided in the input list of actions. */
+  payload?: any;
 }
 
 export type DraggableItem = ChipProps | React.ReactElement<IChip>;
