@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import {ChipContainer} from 'react-chipman'
+import {ChipContainer} from 'react-chipman';
 
 export default class App extends Component {
 
@@ -17,16 +17,16 @@ export default class App extends Component {
 
 ...
 
-<ChipContainer 
-  chips={chips} 
-  orientation='horizontal' 
+<ChipContainer
+  chips={chips}
+  orientation='horizontal'
   onChange={this.onChange}
 />`
-  
+
   inputsCodeBlock =
-`<ChipContainer 
-  id="inputs" 
-  group="inputs" 
+`<ChipContainer
+  id="inputs"
+  group="inputs"
   orientation="vertical">
     <input key="10" type="text" defaultValue="This is"/>
     <input key="20" type="text" defaultValue="more confusing"/>
@@ -35,9 +35,9 @@ export default class App extends Component {
     <input key="50" type="text" defaultValue="Skittles"/>
 </ChipContainer>
 
-<ChipContainer 
-  id="buttons" 
-  group="buttons" 
+<ChipContainer
+  id="buttons"
+  group="buttons"
   orientation="horizontal"
   removeOnDropOut>
     <SomeElement bgColor="lightblue" text="A" key="a"/>
@@ -45,7 +45,7 @@ export default class App extends Component {
     <SomeElement bgColor="wheat" text="Upsize!" key="c"/>
 </ChipContainer>`
 
-  daysAndPlanetsCodeBlock = 
+  daysAndPlanetsCodeBlock =
 `const chipsDaysOfWeek = [
   { key: 1, label: 'Sunday' },
   { key: 2, label: 'Monday' },
@@ -70,18 +70,18 @@ const chipsPlanets = [
 ...
 
 <ChipContainer id="days"
-  group="days-and-planets" 
-  chips={chipsDaysOfWeek} 
+  group="days-and-planets"
+  chips={chipsDaysOfWeek}
   orientation='horizontal'
-  removeOnDropOut 
+  removeOnDropOut
   onChange={this.onChange}
 />
 
 <ChipContainer id="planets"
-  group="days-and-planets" 
-  chips={chipsPlanets} 
-  orientation='horizontal' 
-  removeOnDropOut 
+  group="days-and-planets"
+  chips={chipsPlanets}
+  orientation='horizontal'
+  removeOnDropOut
   onChange={this.onChange}
 />`
 
@@ -122,8 +122,8 @@ const chipsPlanets = [
               <div className="card-body">
                 <h5 className="card-title">Basic usage</h5>
                 <p>Drag to re-arrange the items.</p>
-                <ChipContainer chips={chips} 
-                               orientation='horizontal' 
+                <ChipContainer chips={chips}
+                               orientation='horizontal'
                                onChange={this.onChange}/>
               </div>
             </div>
@@ -134,7 +134,7 @@ const chipsPlanets = [
             </div>
           </div>
         </div>
-        
+
         <div className="card mt-4">
           <div className="row">
             <div className="col-md-6">
@@ -143,16 +143,16 @@ const chipsPlanets = [
                 <p>Items can be dragged between the two groups below.</p>
                 <p>An item will be removed if dropped outside the boundaries of either the days or the planets container.</p>
                 <ChipContainer id="days"
-                              group="days-and-planets" 
-                              chips={chipsDaysOfWeek} 
+                              group="days-and-planets"
+                              chips={chipsDaysOfWeek}
                               orientation='horizontal'
-                              removeOnDropOut 
+                              removeOnDropOut
                               onChange={this.onChange}/>
                 <ChipContainer id="planets"
-                              group="days-and-planets" 
-                              chips={chipsPlanets} 
-                              orientation='horizontal' 
-                              removeOnDropOut 
+                              group="days-and-planets"
+                              chips={chipsPlanets}
+                              orientation='horizontal'
+                              removeOnDropOut
                               onChange={this.onChange}/>
               </div>
             </div>
@@ -170,12 +170,12 @@ const chipsPlanets = [
               <div className="card-body">
                 <h5>Using React elements</h5>
                 <p>Any React element is accepted as a child of `ChipContainer` which immediately turns it into a draggable item.</p>
-                
+
                 <div className="row">
                   <div className="col-md-6">
                     <h6 className="text-muted">Text fields</h6>
-                    <ChipContainer id="inputs" 
-                                   group="inputs" 
+                    <ChipContainer id="inputs"
+                                   group="inputs"
                                    orientation="vertical">
                       <input key="10" type="text" defaultValue="This is"/>
                       <input key="20" type="text" defaultValue="more confusing"/>
@@ -184,11 +184,11 @@ const chipsPlanets = [
                       <input key="50" type="text" defaultValue="Skittles"/>
                     </ChipContainer>
                   </div>
-        
+
                   <div className="col-md-6">
                     <h6 className="text-muted">Buttons</h6>
-                    <ChipContainer id="buttons" 
-                                   group="buttons" 
+                    <ChipContainer id="buttons"
+                                   group="buttons"
                                    orientation="horizontal"
                                    removeOnDropOut>
                       <SomeElement bgColor="lightblue" text="A" key="a"/>
