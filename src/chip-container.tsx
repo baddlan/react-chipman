@@ -119,12 +119,12 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
   /** @override */
   public render() {
     const {id, orientation, group, className, removeOnDropOut} = {...ChipContainer.DEFAULT_PROPS, ...this.props};
-    const draggables = this.state.children 
+    const draggables = this.state.children
       ? this.renderChildren()
-      : this.state.chips 
+      : this.state.chips
         ? this.renderChips()
         : [];
-    
+
     return (
       <div id={id} className={className}>
         <Container
@@ -142,7 +142,6 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
 
   /**
    * Render chips.
-   * @param chips
    */
   protected renderChips() {
     return this.state.chips && this.state.chips.map((chip) => (
@@ -154,7 +153,6 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
 
   /**
    * Render child components.
-   * @param children
    */
   protected renderChildren() {
     if (isArray(this.state.children)) {
