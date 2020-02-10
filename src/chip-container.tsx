@@ -81,7 +81,7 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
   public static readonly CHIP_CLASS_PREFIX = 'cm-cont-';
 
   protected keyGroup: string = '';
-  protected dropHandler: OnDropCallback;
+  protected dropHandler?: OnDropCallback;
   protected draggableByIndexHandler: ContainerOptions['getChildPayload'];
 
   /** Constructor */
@@ -139,6 +139,11 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
         </Container>
       </div>
     );
+  }
+
+  /** @override */
+  public componentWillUnmount(): void {
+    this.dropHandler = undefined;
   }
 
   /**
