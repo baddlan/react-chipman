@@ -90,31 +90,11 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
     this.dropHandler = this.onDrop.bind(this);
     this.draggableByIndexHandler = this.getDraggableByIndex.bind(this);
 
-    // Preprocess chip props
-    const chips: ChipProps[] | undefined = this.props.chips?.map((chip) => {
-      const newChip = {...chip};
-      // Add a class name that identifies chips with their parent container
-      if (props.id) {
-        newChip.className = (newChip.className && isString(newChip.className) && newChip.className.length > 0)
-          ? ` ${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`
-          : `${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`;
-      }
-
-      return newChip;
-    });
-
-    let children;
-
-    if (props.children) {
-      children = isArray(props.children) ? [...props.children]
-        : [props.children as React.ReactElement];
-    }
-
-    this.state = { chips, children };
-
     if (props.group) {
       this.keyGroup = `${props.group}-`;
     }
+
+    this.state = this.determineState(props);
   }
 
   /** @override */
@@ -142,8 +122,44 @@ export class ChipContainer extends React.Component<ChipContainerProps, State> {
   }
 
   /** @override */
+  public componentDidUpdate(prevProps: ChipContainerProps) {
+    if (prevProps.children !== this.props.children || prevProps.chips !== this.props.chips) {
+      this.setState(this.determineState(this.props));
+    }
+  }
+
+  /** @override */
   public componentWillUnmount(): void {
     this.dropHandler = undefined;
+    this.draggableByIndexHandler = undefined;
+  }
+
+  /**
+   * Derive state from props as they get updated by component users.
+   */
+  protected determineState(props: ChipContainerProps): State {
+    // Preprocess chip props
+    const chips: ChipProps[] | undefined = this.props.chips?.map((chip) => {
+      const newChip = {...chip};
+      // Add a class name that identifies chips with their parent container
+      if (props.id) {
+        newChip.className = (newChip.className && isString(newChip.className) && newChip.className.length > 0)
+          ? `${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`
+          : `${ChipContainer.CHIP_CLASS_PREFIX}${props.id}`;
+      }
+
+      return newChip;
+    });
+
+    let children;
+
+    if (props.children) {
+      children = isArray(props.children)
+        ? [...props.children]
+        : [props.children as React.ReactElement];
+    }
+
+    return { chips, children };
   }
 
   /**
