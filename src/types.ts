@@ -22,8 +22,6 @@ export interface ListActionsResult<T> {
   actions: ListActions;
   /** Modified list of items. */
   items: T[];
-  /** The item provided in the input list of actions. */
-  payload?: any;
 }
 
 export type DraggableItem = ChipProps | React.ReactElement<IChip>;

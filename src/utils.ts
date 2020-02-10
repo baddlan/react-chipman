@@ -31,6 +31,5 @@ export function applyListActions<T>(items: T[], actions: ListActions): ListActio
   return {
     actions,
     items: outItems,
-    payload,
   };
 }
